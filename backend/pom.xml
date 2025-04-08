@@ -16,7 +16,7 @@
     <artifactId>backend</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>Skill-Sharing Platform Backend</name>
-    <description>Backend service for Skill-Sharing & Learning Platform</description>
+    <description>Backend service for Skill-Sharing &amp; Learning Platform</description>
 
     <properties>
         <java.version>21</java.version>
