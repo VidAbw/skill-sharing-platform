@@ -1,11 +1,42 @@
+// api.js
 import axios from 'axios';
 
-const api = axios.create({
-  baseURL: '/api', // Proxy will forward to Spring Boot
-});
+const API_URL = 'http://localhost:8080/api';
 
-// Example: Fetch learning progress updates
-export const fetchProgress = () => api.get('/progress');
-export const createProgress = (data) => api.post('/progress', data);
+// Learning Progress API calls
+export const getAllLearningProgress = () => {
+  return axios.get(`${API_URL}/learning-progress`);
+};
 
-export default api;
+export const getLearningProgressByUser = (userId) => {
+  return axios.get(`${API_URL}/learning-progress/user/${userId}`);
+};
+
+export const createLearningProgress = (progressData) => {
+  return axios.post(`${API_URL}/learning-progress`, progressData);
+};
+
+export const updateLearningProgress = (id, progressData) => {
+  return axios.put(`${API_URL}/learning-progress/${id}`, progressData);
+};
+
+export const deleteLearningProgress = (id) => {
+  return axios.delete(`${API_URL}/learning-progress/${id}`);
+};
+
+// Travel Guide API calls
+export const getAllTravelGuides = () => {
+  return axios.get(`${API_URL}/travel-guides`);
+};
+
+export const getTravelGuideById = (id) => {
+  return axios.get(`${API_URL}/travel-guides/${id}`);
+};
+
+export const searchTravelGuidesByDestination = (destination) => {
+  return axios.get(`${API_URL}/travel-guides/destination?search=${destination}`);
+};
+
+export const searchTravelGuidesByTopic = (topic) => {
+  return axios.get(`${API_URL}/travel-guides/topic?search=${topic}`);
+};
