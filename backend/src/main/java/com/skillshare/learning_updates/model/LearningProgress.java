@@ -22,6 +22,10 @@ public class LearningProgress {
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
     
+    public LearningProgress() {
+        // Default constructor required by JPA
+    }
+
     public LearningProgress(Long id, String title, String content, LocalDateTime createdAt, LocalDateTime updatedAt,
             User user) {
         this.id = id;
@@ -83,6 +87,4 @@ public class LearningProgress {
     public void setUser(User user) {
         this.user = user;
     }
-
-
 }
