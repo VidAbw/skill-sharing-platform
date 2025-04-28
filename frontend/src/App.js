@@ -2,7 +2,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ProgressList from './components/ProgressList';
-import ProgressForm from './components/ProgressForm';
+import ProgressForm from './component/ProgressForm';
 import TravelGuideSearch from './components/TravelGuideSearch';
 import './App.css';
 
