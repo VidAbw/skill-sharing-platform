@@ -5,6 +5,17 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import '../App.css';
 
+// EditTravelPlan component
+// This component allows users to edit an existing travel plan
+// It fetches the existing plan data from the server, populates the form fields,
+// and allows users to update the plan details, including adding destinations and activities
+// It also includes a progress bar to indicate the current step in the multi-step form
+// The component uses React Router for navigation and Axios for API requests
+// The component is structured to handle multiple steps in the form, with validation and error handling
+// The component also includes image upload functionality with file size and type validation
+// The component is styled using Bootstrap classes for a responsive and user-friendly interface
+ 
+
 const EditTravelPlan = () => {
     const { id } = useParams();
     const navigate = useNavigate();
