@@ -1,0 +1,226 @@
+/* Main Container */
+.profile-container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  position: relative;
+}
+
+/* Profile Card */
+.profile-card {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #f0f0f0;
+  position: relative;
+}
+
+/* Profile Image */
+.profile-picture {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ddd;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Profile Details */
+.profile-details {
+  flex: 1;
+}
+
+.profile-details h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+  color: #222;
+}
+
+.profile-details p {
+  margin: 6px 0;
+  font-size: 15px;
+  color: #555;
+}
+
+.profile-details strong {
+  color: #333;
+}
+
+/* Action Buttons */
+.profile-actions {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+.logout-btn,
+.edit-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.logout-btn {
+  background-color: #ff5c5c;
+  color: #fff;
+}
+
+.logout-btn:hover {
+  background-color: #e04a4a;
+}
+
+.edit-btn {
+  background-color: #4a90e2;
+  color: #fff;
+}
+
+.edit-btn:hover {
+  background-color: #357ac9;
+}
+
+/* User Posts Section */
+.user-posts-section {
+  margin-top: 30px;
+}
+
+.user-posts-section h3 {
+  font-size: 22px;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 8px;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+/* Loading */
+.loading {
+  text-align: center;
+  margin-top: 100px;
+  font-size: 20px;
+  color: #666;
+}
+
+/* ===== Modal Styling ===== */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.edit-modal {
+  background: #fff;
+  padding: 25px 30px;
+  border-radius: 10px;
+  width: 350px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.edit-modal h3 {
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.edit-modal input,
+.edit-modal textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.edit-modal button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 15px;
+  background-color: #4a90e2;
+  color: #fff;
+  transition: background-color 0.3s ease;
+}
+
+.edit-modal button:hover {
+  background-color: #357ac9;
+}
+
+.cancel-btn {
+  background-color: #aaa !important;
+}
+
+.cancel-btn:hover {
+  background-color: #888 !important;
+}
+
+.post-card {
+  background: #fafafa;
+  padding: 20px;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.post-card h4 {
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.post-card p {
+  color: #555;
+  margin-bottom: 8px;
+}
+
+.post-card small {
+  color: #999;
+}
+.follow-btn {
+  padding: 10px 20px;
+  background-color: #1da1f2; /* Twitter-like blue */
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.follow-btn:hover {
+  background-color: #0d8ddb;
+  transform: scale(1.05);
+}
+
+.unfollow-btn {
+  padding: 10px 20px;
+  background-color: #e0e0e0;
+  color: #333;
+  border: none;
+  border-radius: 20px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.unfollow-btn:hover {
+  background-color: #c6c6c6;
+  transform: scale(1.05);
+}

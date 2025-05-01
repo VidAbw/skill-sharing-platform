@@ -1,0 +1,47 @@
+.follow-btn {
+  padding: 10px 20px;
+  font-size: 14px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+/* Follow State */
+.follow-btn.follow {
+  background-color: #1da1f2; /* Blue */
+  color: white;
+}
+
+.follow-btn.follow:hover {
+  background-color: #0d8ddb;
+}
+
+/* Following State */
+.follow-btn.following {
+  background-color: #e0e0e0; /* Light Gray */
+  color: #333;
+}
+
+.follow-btn.following:hover {
+  background-color: #c6c6c6;
+}
+
+/* Loading State */
+.follow-btn.loading {
+  background-color: #b0b0b0;
+  color: #f9f9f9;
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+/* Disabled button */
+.follow-btn:disabled {
+  cursor: not-allowed;
+}
+
+/* Smooth hover effect */
+.follow-btn:not(.loading):hover {
+  transform: translateY(-2px);
+}
