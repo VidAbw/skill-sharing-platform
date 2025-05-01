@@ -3,7 +3,7 @@ import axios from "../api/axiosInstance";
 import LikeButton from "../components/LikeButton";
 import CommentSection from "../components/CommentSection";
 import { AuthContext } from "../context/AuthContext";
-import "../styles/HomePage.css";
+import "../styles/Homepage.css";
 
 const HomePage = () => {
   const { user } = useContext(AuthContext);
