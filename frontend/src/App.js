@@ -1,24 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import LoginPage from "./pages/Login";
+import SignupPage from "./pages/Signup";
+import ProfilePage from "./pages/ProfilePage";
+import AuthProvider from "./context/AuthContext";
+import PrivateRoute from "./components/PrivateRoute";
+
+import Header from "./components/Header";
+import Home from "./pages/Home";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AuthProvider>
+      <BrowserRouter>
+        <Header /> {/* Always visible */}
+        <Routes>
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/signup" element={<SignupPage />} />
+
+          {/* Protected Profile Routes */}
+          <Route
+            path="/profile/*"
+            element={
+              <PrivateRoute>
+                <Routes>
+                  <Route path="" element={<ProfilePage />} />
+                  <Route path=":id" element={<ProfilePage />} />
+                </Routes>
+              </PrivateRoute>
+            }
+          />
+          <Route path="/" element={<Home />} />
+          {/* Optional: Redirect unknown routes */}
+          <Route path="*" element={<Navigate to="/profile" replace />} />
+        </Routes>
+      </BrowserRouter>
+    </AuthProvider>
   );
 }
 
