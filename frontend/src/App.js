@@ -7,6 +7,10 @@ import PrivateRoute from "./components/PrivateRoute";
 
 import Header from "./components/Header";
 import Home from "./pages/Home";
+import ProgressList from "./components/ProgressList"; 
+import ProgressForm from "./components/ProgressForm";
+import TravelGuideList from "./components/travelGuides/TravelGuideList";
+import TravelGuideForm from "./components/travelGuides/TravelGuideForm";
 
 function App() {
   return (
@@ -30,6 +34,28 @@ function App() {
             }
           />
           <Route path="/" element={<Home />} />
+          <Route path="/progress" element={<ProgressList />} />
+          <Route path="/progress/new" element={
+            <PrivateRoute>
+              <ProgressForm />
+            </PrivateRoute>
+          } />
+          <Route path="/progress/edit/:id" element={
+            <PrivateRoute>
+              <ProgressForm />
+            </PrivateRoute>
+          } />
+          <Route path="/travel-guides" element={<TravelGuideList />} />
+          <Route path="/travel-guides/new" element={
+            <PrivateRoute>
+              <TravelGuideForm />
+            </PrivateRoute>
+          } />
+          <Route path="/travel-guides/:id" element={
+            <PrivateRoute>
+              <TravelGuideForm />
+            </PrivateRoute>
+          } />
           {/* Optional: Redirect unknown routes */}
           <Route path="*" element={<Navigate to="/profile" replace />} />
         </Routes>
