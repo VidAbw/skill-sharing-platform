@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import styles from "./Header.module.css";
+import styles from "../styles/Header.module.css";
 import logo from "../assets/logo.png";
 import { useNavigate } from "react-router-dom";
 import { FiHome, FiUser, FiSearch } from "react-icons/fi";
