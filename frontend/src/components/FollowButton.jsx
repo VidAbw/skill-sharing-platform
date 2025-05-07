@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import axios from "../api/axiosInstance";
 import "../styles/FollowButton.css"; // Import the CSS
 
@@ -6,8 +6,7 @@ const FollowButton = ({ currentUserId, targetUserId, onFollowChange }) => {
   const [isFollowing, setIsFollowing] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  // ✅ Check initially if user is already following
-  const checkFollowing = async () => {
+  const checkFollowing = useCallback(async () => {
     try {
       const res = await axios.get(`/follows/followers/${targetUserId}`);
       const match = res.data.find((f) => f.followerId === currentUserId);
@@ -15,13 +14,13 @@ const FollowButton = ({ currentUserId, targetUserId, onFollowChange }) => {
     } catch (err) {
       console.error("❌ Failed to check following status:", err);
     }
-  };
+  }, [currentUserId, targetUserId]);
 
   useEffect(() => {
     if (currentUserId && targetUserId) {
       checkFollowing();
     }
-  }, [currentUserId, targetUserId]);
+  }, [checkFollowing, currentUserId, targetUserId]);
 
   // ✅ Toggle follow/unfollow
   const handleToggleFollow = async () => {

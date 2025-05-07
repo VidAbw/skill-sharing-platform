@@ -1,5 +1,5 @@
 // src/context/AuthContext.js
-import { createContext, useState, useEffect, useContext } from "react";
+import React, { createContext, useState, useEffect, useCallback } from 'react';
 import axios from "../api/axiosInstance"; // make sure axiosInstance includes token in headers
 import { useNavigate } from "react-router-dom";
 
@@ -22,7 +22,7 @@ const AuthProvider = ({ children }) => {
     setUser(null);
   };
 
-  const fetchCurrentUser = async (jwt = token) => {
+  const fetchCurrentUser = useCallback(async (jwt = token) => {
     if (!jwt) return;
     try {
       const res = await axios.get("/auth/me", {
@@ -33,9 +33,11 @@ const AuthProvider = ({ children }) => {
       setUser(res.data);
     } catch (err) {
       console.error("Failed to fetch user", err);
-      logout(); // logout on failure
+      logout();
+    } finally {
+      setLoading(false);
     }
-  };
+  }, [token]);
 
   useEffect(() => {
     if (token) {
@@ -43,7 +45,7 @@ const AuthProvider = ({ children }) => {
     } else {
       setLoading(false);
     }
-  }, [token]);
+  }, [token, fetchCurrentUser]);
 
   return (
     <AuthContext.Provider value={{ token, user, login, logout, loading }}>

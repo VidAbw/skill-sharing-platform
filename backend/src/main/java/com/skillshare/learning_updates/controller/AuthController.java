@@ -4,6 +4,8 @@ import com.skillshare.learning_updates.model.User;
 import com.skillshare.learning_updates.repository.UserRepository;
 import com.skillshare.learning_updates.utils.JwtUtil;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -58,26 +60,38 @@ public class AuthController {
     
         Optional<User> user = userRepo.findByEmail(userDetails.getUsername());
         return user.<ResponseEntity<?>>map(ResponseEntity::ok)
-        .orElseGet(() -> ResponseEntity.status(404).body("User not found"));
+                .orElseGet(() -> ResponseEntity.status(404).body("User not found"));
     }
-    
-    
 
-
-
-    @Data static class SignupRequest {
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
+    static class SignupRequest {
         private String fullName;
         private String email;
         private String password;
+        public String getFullName() { return fullName; }
+        public String getEmail() { return email; }
+        public String getPassword() { return password; }
     }
 
-    @Data static class LoginRequest {
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
+    static class LoginRequest {
         private String email;
         private String password;
+        public String getEmail() { return email; }
+        public String getPassword() { return password; }
     }
 
-    @Data static class JwtResponse {
-        private final String token;
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
+    static class JwtResponse {
+        private String token;
+        public JwtResponse(String token) { this.token = token; }
+        public String getToken() { return token; }
     }
 }
 

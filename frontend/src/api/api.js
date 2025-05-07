@@ -28,6 +28,16 @@ export const getLearningProgressById = (id) => {
   return axios.get(`${API_URL}/learning-progress/${id}`);
 };
 
+export const fetchProgress = async () => {
+    try {
+        const response = await axios.get('/api/progress');
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching progress:', error);
+        throw error;
+    }
+};
+
 // Travel Guide API calls
 export const getAllTravelGuides = () => {
   return axios.get(`${API_URL}/travel-guides`);

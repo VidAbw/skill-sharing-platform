@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useContext } from "react";
-import axios from "../api/axiosInstance";
 import LikeButton from "../components/LikeButton";
 import CommentSection from "../components/CommentSection";
 import { AuthContext } from "../context/AuthContext";
@@ -7,11 +6,10 @@ import "../styles/Homepage.css";
 
 const HomePage = () => {
   const { user } = useContext(AuthContext);
-  const [followedUserIds, setFollowedUserIds] = useState([]);
-  const [visiblePosts, setVisiblePosts] = useState([]);
+  const [allPosts, setAllPosts] = useState([]);
 
   // 🔒 All hardcoded posts from all users
-  const allPosts = [
+  const allPostsData = [
     {
       postId: 1,
       postTitle: "My First Travel Experience 🌍",
@@ -47,33 +45,24 @@ const HomePage = () => {
   ];
 
   useEffect(() => {
-    const loadFollowedUserPosts = async () => {
+    const loadAllPosts = async () => {
       try {
-        const res = await axios.get(`/follows/following/${user.id}`);
-        const followingIds = res.data.map((f) => f.followingId);
-        setFollowedUserIds(followingIds);
-
-        const filtered = allPosts.filter((post) =>
-          followingIds.includes(post.ownerId)
-        );
-        setVisiblePosts(filtered);
+        setAllPosts(allPostsData);
       } catch (err) {
-        console.error("❌ Failed to fetch followed posts", err);
+        console.error("❌ Failed to fetch all posts", err);
       }
     };
 
-    if (user?.id) {
-      loadFollowedUserPosts();
-    }
-  }, [user]);
+    loadAllPosts();
+  }, [allPostsData]);
 
   return (
     <div className="homepage-container">
       <h2 className="homepage-title">ExploreHub Feed</h2>
 
-      {visiblePosts.length === 0 && <p>No posts from followed users.</p>}
+      {allPosts.length === 0 && <p>No posts available.</p>}
 
-      {visiblePosts.map((post) => (
+      {allPosts.map((post) => (
         <div className="post-card" key={post.postId}>
           <h4>{post.postTitle}</h4>
           <p>{post.postContent}</p>

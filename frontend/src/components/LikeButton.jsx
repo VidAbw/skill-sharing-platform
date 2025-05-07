@@ -30,7 +30,7 @@ const LikeButton = ({ postId, userId }) => {
 
   useEffect(() => {
     fetchLikeData();
-  }, [postId]);
+  }, [postId, userId]);
 
   return (
     <button

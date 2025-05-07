@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import axios from "../api/axiosInstance";
 import "../styles/CommentSection.css";
 
@@ -13,7 +13,7 @@ const CommentSection = ({
   const [editCommentId, setEditCommentId] = useState(null);
   const [editContent, setEditContent] = useState("");
 
-  const fetchComments = async () => {
+  const fetchComments = useCallback(async () => {
     try {
       const res = await axios.get(
         `/comments/post/${postId}?postOwnerId=${postOwnerId}`
@@ -22,7 +22,7 @@ const CommentSection = ({
     } catch (err) {
       console.error("Failed to fetch comments:", err);
     }
-  };
+  }, [postId, postOwnerId]);
 
   const handleAdd = async () => {
     if (!newComment.trim()) return;
@@ -71,7 +71,7 @@ const CommentSection = ({
 
   useEffect(() => {
     fetchComments();
-  }, [postId]);
+  }, [fetchComments]);
 
   return (
     <div className="comment-section">
