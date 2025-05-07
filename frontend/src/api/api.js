@@ -24,6 +24,10 @@ export const deleteLearningProgress = (id) => {
   return axios.delete(`${API_URL}/learning-progress/${id}`);
 };
 
+export const getLearningProgressById = (id) => {
+  return axios.get(`${API_URL}/learning-progress/${id}`);
+};
+
 // Travel Guide API calls
 export const getAllTravelGuides = () => {
   return axios.get(`${API_URL}/travel-guides`);
@@ -39,4 +43,12 @@ export const searchTravelGuidesByDestination = (destination) => {
 
 export const searchTravelGuidesByTopic = (topic) => {
   return axios.get(`${API_URL}/travel-guides/topic?search=${topic}`);
+};
+
+export const createTravelGuide = (guideData) => {
+  return axios.post(`${API_URL}/travel-guides`, guideData);
+};
+
+export const updateTravelGuide = (id, guideData) => {
+  return axios.put(`${API_URL}/travel-guides/${id}`, guideData);
 };
