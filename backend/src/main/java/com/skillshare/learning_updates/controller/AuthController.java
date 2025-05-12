@@ -57,7 +57,7 @@ public class AuthController {
         if (userDetails == null) {
             return ResponseEntity.status(401).body("Unauthorized");
         }
-    
+
         Optional<User> user = userRepo.findByEmail(userDetails.getUsername());
         return user.<ResponseEntity<?>>map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.status(404).body("User not found"));
@@ -70,9 +70,6 @@ public class AuthController {
         private String fullName;
         private String email;
         private String password;
-        public String getFullName() { return fullName; }
-        public String getEmail() { return email; }
-        public String getPassword() { return password; }
     }
 
     @Data
@@ -81,17 +78,15 @@ public class AuthController {
     static class LoginRequest {
         private String email;
         private String password;
-        public String getEmail() { return email; }
-        public String getPassword() { return password; }
     }
 
     @Data
     @NoArgsConstructor
-    @AllArgsConstructor
     static class JwtResponse {
         private String token;
-        public JwtResponse(String token) { this.token = token; }
-        public String getToken() { return token; }
+
+        public JwtResponse(String token) {
+            this.token = token;
+        }
     }
 }
-
