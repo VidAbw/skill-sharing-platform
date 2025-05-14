@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { createLearningProgress, updateLearningProgress, getLearningProgressById } from '../../api/api';
 import { AuthContext } from '../../context/AuthContext';
-import '../../styles/ProgressForm.css';
+import '../../styles/ProgressFrom.css';
 
 const ProgressForm = () => {
   const { id } = useParams();
