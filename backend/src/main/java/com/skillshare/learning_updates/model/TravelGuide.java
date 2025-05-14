@@ -10,6 +10,7 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "travel_guide")
 public class TravelGuide {
+    public TravelGuide() {}
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
