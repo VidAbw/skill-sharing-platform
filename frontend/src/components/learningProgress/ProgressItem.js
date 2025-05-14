@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../../styles/Progress.css';
+import '../../styles/ProgressList.css';
 
 const ProgressItem = ({ progress, onDelete }) => {
   const formatDate = (dateString) => {
