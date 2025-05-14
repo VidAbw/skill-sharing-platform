@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { getAllLearningProgress, deleteLearningProgress } from '../../api/api';
 import ProgressItem from './ProgressItem';
 import { AuthContext } from '../../context/AuthContext';
-import '../../styles/Progress.css';
+import '../../styles/ProgressList.css';
 
 const ProgressList = () => {
   const [progressItems, setProgressItems] = useState([]);
