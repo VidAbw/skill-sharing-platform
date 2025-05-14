@@ -7,8 +7,8 @@ import PrivateRoute from "./components/PrivateRoute";
 
 import Header from "./components/Header";
 import Home from "./pages/Home";
-import ProgressList from "./components/ProgressList"; 
-import ProgressForm from "./components/ProgressForm";
+import ProgressList from "./components/learningProgress/ProgressList";
+import ProgressForm from "./components/learningProgress/ProgressForm";
 import TravelGuideList from "./components/travelGuides/TravelGuideList";
 import TravelGuideForm from "./components/travelGuides/TravelGuideForm";
 
