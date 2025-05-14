@@ -4,45 +4,45 @@ import CommentSection from "../components/CommentSection";
 import { AuthContext } from "../context/AuthContext";
 import "../styles/Homepage.css";
 
+// 🔒 All hardcoded posts from all users
+const allPostsData = [
+  {
+    postId: 1,
+    postTitle: "My First Travel Experience 🌍",
+    postContent:
+      "I visited Ella, Sri Lanka, and it was an amazing adventure! The views were breathtaking.",
+    ownerId: 4,
+    ownerName: "S L D C Karunarathne",
+  },
+  {
+    postId: 2,
+    postTitle: "Hiking at Adam's Peak 🏞️",
+    postContent:
+      "The climb was challenging but the sunrise view was truly magical!",
+    ownerId: 4,
+    ownerName: "S L D C Karunarathne",
+  },
+  {
+    postId: 3,
+    postTitle: "Exploring Colombo 🏙️",
+    postContent:
+      "Colombo is full of life! The food, the beaches, and the people were amazing!",
+    ownerId: 5,
+    ownerName: "M S S Meegoda",
+  },
+  {
+    postId: 4,
+    postTitle: "Trip to Nuwara Eliya 🌸",
+    postContent:
+      "Tea plantations and cool breeze made it a beautiful getaway.",
+    ownerId: 5,
+    ownerName: "M S S Meegoda",
+  },
+];
+
 const HomePage = () => {
   const { user } = useContext(AuthContext);
   const [allPosts, setAllPosts] = useState([]);
-
-  // 🔒 All hardcoded posts from all users
-  const allPostsData = [
-    {
-      postId: 1,
-      postTitle: "My First Travel Experience 🌍",
-      postContent:
-        "I visited Ella, Sri Lanka, and it was an amazing adventure! The views were breathtaking.",
-      ownerId: 4,
-      ownerName: "S L D C Karunarathne",
-    },
-    {
-      postId: 2,
-      postTitle: "Hiking at Adam's Peak 🏞️",
-      postContent:
-        "The climb was challenging but the sunrise view was truly magical!",
-      ownerId: 4,
-      ownerName: "S L D C Karunarathne",
-    },
-    {
-      postId: 3,
-      postTitle: "Exploring Colombo 🏙️",
-      postContent:
-        "Colombo is full of life! The food, the beaches, and the people were amazing!",
-      ownerId: 5,
-      ownerName: "M S S Meegoda",
-    },
-    {
-      postId: 4,
-      postTitle: "Trip to Nuwara Eliya 🌸",
-      postContent:
-        "Tea plantations and cool breeze made it a beautiful getaway.",
-      ownerId: 5,
-      ownerName: "M S S Meegoda",
-    },
-  ];
 
   useEffect(() => {
     const loadAllPosts = async () => {
@@ -54,7 +54,7 @@ const HomePage = () => {
     };
 
     loadAllPosts();
-  }, [allPostsData]);
+  }, []); // Empty dependency array since allPostsData is now static
 
   return (
     <div className="homepage-container">
