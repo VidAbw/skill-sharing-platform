@@ -1,6 +1,6 @@
 package com.skillshare.learning_updates.security;
 
-import com.skillshare.learning_updates.utils.JwtUtil;
+import com.skillshare.learning_updates.utils.jwtUtil;
 
 import com.skillshare.learning_updates.repository.UserRepository;
 import jakarta.servlet.FilterChain;
@@ -21,7 +21,7 @@ import java.io.IOException;
 @RequiredArgsConstructor
 public class JwtFilter extends OncePerRequestFilter {
 
-    private final JwtUtil jwtUtil;
+    private final jwtUtil jwtUtil;
     private final UserDetailsService userDetailsService;
 
     @Override
