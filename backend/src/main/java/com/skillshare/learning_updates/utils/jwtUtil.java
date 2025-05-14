@@ -14,7 +14,7 @@ import java.security.Key;
 import java.util.Date;
 
 @Component
-public class JwtUtil {
+public class jwtUtil {
 
     private final String SECRET = "my-secret-key-for-jwt-signing-example123";  // Ensure at least 256-bit key
     private final long EXPIRATION = 1000 * 60 * 60 * 10;  // 10 hours
