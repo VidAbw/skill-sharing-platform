@@ -1,6 +1,6 @@
 // TravelGuideSearch.js
 import React, { useState } from 'react';
-import { searchTravelGuidesByDestination, searchTravelGuidesByTopic } from '../api/api';
+import { searchTravelGuidesByDestination, searchTravelGuidesByTopic } from '../../api/api';
 import './TravelGuideSearch.css';
 
 const TravelGuideSearch = () => {

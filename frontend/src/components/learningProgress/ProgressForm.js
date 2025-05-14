@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getAllLearningProgress, deleteLearningProgress } from '../api/api';
+import { getAllLearningProgress, deleteLearningProgress } from '../../api/api';
 import { Link } from 'react-router-dom';
 import './ProgressList.css';
 

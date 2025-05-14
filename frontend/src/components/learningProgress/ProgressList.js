@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { fetchProgress } from '../api/api';
+import { fetchProgress } from '../../api/api';
 
 const ProgressList = () => {
   const [progressList, setProgressList] = useState([]);
