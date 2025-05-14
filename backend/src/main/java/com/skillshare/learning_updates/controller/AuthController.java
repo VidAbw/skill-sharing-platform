@@ -2,7 +2,7 @@ package com.skillshare.learning_updates.controller;
 
 import com.skillshare.learning_updates.model.User;
 import com.skillshare.learning_updates.repository.UserRepository;
-import com.skillshare.learning_updates.utils.JwtUtil;
+import com.skillshare.learning_updates.utils.jwtUtil;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
@@ -22,7 +22,7 @@ public class AuthController {
 
     private final UserRepository userRepo;
     private final PasswordEncoder passwordEncoder;
-    private final JwtUtil jwtUtil;
+    private final jwtUtil jwtUtil;
 
     @PostMapping("/signup")
     public ResponseEntity<?> signup(@RequestBody SignupRequest req) {
