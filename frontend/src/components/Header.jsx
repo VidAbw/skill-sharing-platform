@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import styles from "../styles/Header.module.css";
 import logo from "../assets/logo.png";
 import { useNavigate } from "react-router-dom";
-import { FiHome, FiUser, FiSearch } from "react-icons/fi";
+import { FiHome, FiUser, FiSearch, FiBook, FiMap } from "react-icons/fi";
 import axios from "../api/axiosInstance";
 
 let debounceTimer;
@@ -81,6 +81,8 @@ const Header = () => {
 
       <div className={styles.right}>
         <FiHome onClick={() => navigate("/")} title="Home" />
+        <FiBook onClick={() => navigate("/progress")} title="Learning Progress" />
+        <FiMap onClick={() => navigate("/travel-guides")} title="Travel Guides" />
         <FiUser onClick={() => navigate("/profile")} title="Profile" />
       </div>
     </header>
