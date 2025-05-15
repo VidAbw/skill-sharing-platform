@@ -5,6 +5,11 @@ import logo from "../assets/travel-logo.jpg";
 import video from "../assets/travelvideo.mp4";
 import { useNavigate } from 'react-router-dom';
 
+//This is home page for travel plan
+//This page is designed to be responsive and user-friendly, ensuring that users can easily navigate and interact with the content on various devices.
+//The page includes a hero section, features section, how it works section, video preview section, and a call to action.
+//The hero section introduces the concept of travel learning plans, while the features section highlights the key benefits of using the platform.
+
 function HomeTravelPlan() {
   const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
