@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import axios from "../api/axiosInstance";
 import "../styles/LikeButton.css"; // ✅ Import new CSS
 
@@ -6,31 +6,39 @@ const LikeButton = ({ postId, userId }) => {
   const [liked, setLiked] = useState(false);
   const [likeCount, setLikeCount] = useState(0);
 
-  const fetchLikeData = async () => {
-    const countRes = await axios.get(`/likes/count/${postId}`);
-    setLikeCount(countRes.data);
+  const fetchLikeData = useCallback(async () => {
+    try {
+      const countRes = await axios.get(`/api/likes/count/${postId}`);
+      setLikeCount(countRes.data);
 
-    const checkRes = await axios
-      .get(`/likes/post/${postId}/user/${userId}`)
-      .catch(() => null);
+      const checkRes = await axios
+        .get(`/api/likes/post/${postId}/user/${userId}`)
+        .catch(() => null);
 
-    if (checkRes?.data?.id) setLiked(true);
-  };
+      if (checkRes?.data?.id) setLiked(true);
+    } catch (error) {
+      console.error("Error fetching like data:", error);
+    }
+  }, [postId, userId]);
 
   const handleToggleLike = async () => {
-    if (liked) {
-      await axios.delete(`/likes`, { data: { userId, postId } });
-    } else {
-      await axios.post(`/likes`, { userId, postId });
-    }
+    try {
+      if (liked) {
+        await axios.delete(`/api/likes`, { data: { userId, postId } });
+      } else {
+        await axios.post(`/api/likes`, { userId, postId });
+      }
 
-    setLiked(!liked);
-    fetchLikeData();
+      setLiked(!liked);
+      fetchLikeData();
+    } catch (error) {
+      console.error("Error toggling like:", error);
+    }
   };
 
   useEffect(() => {
     fetchLikeData();
-  }, [postId, userId]);
+  }, [fetchLikeData]);
 
   return (
     <button
