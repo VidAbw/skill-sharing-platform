@@ -41,7 +41,7 @@ const allPostsData = [
 ];
 
 const HomePage = () => {
-  const { user } = useContext(AuthContext);
+  const { user, loading } = useContext(AuthContext);
   const [allPosts, setAllPosts] = useState([]);
 
   useEffect(() => {
@@ -56,6 +56,10 @@ const HomePage = () => {
     loadAllPosts();
   }, []); // Empty dependency array since allPostsData is now static
 
+  if (loading) {
+    return <div className="loading">Loading...</div>;
+  }
+
   return (
     <div className="homepage-container">
       <h2 className="homepage-title">ExploreHub Feed</h2>
@@ -69,15 +73,17 @@ const HomePage = () => {
           <small>Posted by {post.ownerName}</small>
 
           <div style={{ marginTop: "10px" }}>
-            <LikeButton postId={post.postId} userId={user.id} />
+            {user && <LikeButton postId={post.postId} userId={user.id} />}
           </div>
 
-          <CommentSection
-            postId={post.postId}
-            currentUserId={user.id}
-            currentUserName={user.fullName}
-            postOwnerId={post.ownerId}
-          />
+          {user && (
+            <CommentSection
+              postId={post.postId}
+              currentUserId={user.id}
+              currentUserName={user.fullName}
+              postOwnerId={post.ownerId}
+            />
+          )}
         </div>
       ))}
     </div>
