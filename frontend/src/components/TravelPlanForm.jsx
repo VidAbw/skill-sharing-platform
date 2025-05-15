@@ -5,6 +5,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import '../App.css';
 
+//Added items in Travel Plan Form
+
 const TravelPlanForm = () => {
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
