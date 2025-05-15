@@ -1,7 +1,6 @@
 // src/context/AuthContext.js
 import React, { createContext, useState, useEffect, useCallback } from 'react';
 import axios from "../api/axiosInstance"; // make sure axiosInstance includes token in headers
-import { useNavigate } from "react-router-dom";
 
 export const AuthContext = createContext();
 
