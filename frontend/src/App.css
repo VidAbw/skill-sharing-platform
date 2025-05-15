@@ -1,38 +1,220 @@
-.App {
+#root {
+
+  height: 100%;
   text-align: center;
+  width: 100%;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
+@keyframes logo-spin {
   from {
     transform: rotate(0deg);
   }
   to {
     transform: rotate(360deg);
   }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+/* Adding Bootstrap Icons */
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css");
+
+/* Background and overall styling */
+.travel-plan-container {
+    background: linear-gradient(135deg, #6CB2EB 0%, #1E88E5 100%);
+    min-height: 100vh;
+    padding: 20px 0;
+}
+
+.travel-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    background-color: rgba(255, 255, 255, 0.95);
+}
+
+.travel-inspiration {
+    height: 120px;
+    background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80');
+    background-position: center;
+    background-size: cover;
+    position: relative;
+}
+
+.travel-inspiration::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4));
+}
+
+.step-indicator {
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: 600;
+    z-index: 1;
+    color: #1E88E5;
+}
+
+/* Travel type styling */
+.travel-type-option {
+    width: 23%;
+    text-align: center;
+    padding: 15px 5px;
+    border: 2px solid #e9ecef;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.travel-type-option i {
+    font-size: 24px;
+    color: #6c757d;
+}
+
+.travel-type-option.selected {
+    border-color: #1E88E5;
+    background-color: rgba(30, 136, 229, 0.1);
+}
+
+.travel-type-option.selected i {
+    color: #1E88E5;
+}
+
+/* Accommodation styling */
+.accommodation-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+.accommodation-option {
+    flex: 1 0 18%;
+    text-align: center;
+    padding: 15px 10px;
+    border: 2px solid #e9ecef;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-bottom: 10px;
+}
+
+.accommodation-option i {
+    font-size: 24px;
+    color: #6c757d;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.accommodation-option.selected {
+    border-color: #1E88E5;
+    background-color: rgba(30, 136, 229, 0.1);
+}
+
+.accommodation-option.selected i {
+    color: #1E88E5;
+}
+
+/* Form styling enhancements */
+.form-control:focus, .form-select:focus {
+    border-color: #1E88E5;
+    box-shadow: 0 0 0 0.25rem rgba(30, 136, 229, 0.25);
+}
+
+.form-label {
+    font-weight: 500;
+    color: #495057;
+}
+
+/* Success animation */
+.success-animation {
+    animation: scaleIn 0.5s ease-in-out;
+}
+
+.success-icon {
+    font-size: 5rem;
+}
+
+@keyframes scaleIn {
+    0% { transform: scale(0); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Progress bar styling */
+.progress {
+    height: 8px;
+    background-color: #e9ecef;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    background: linear-gradient(90deg, #1E88E5, #64B5F6);
+    transition: width 0.3s ease;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .travel-type-option {
+        width: 48%;
+    }
+    
+    .accommodation-option {
+        flex: 1 0 30%;
+    }
+}
+
+@media (max-width: 576px) {
+    .travel-type-option {
+        width: 100%;
+    }
+    
+    .accommodation-option {
+        flex: 1 0 45%;
+    }
+    
+    .card-body {
+        padding: 20px !important;
+    }
+}
+
+
+.modal.show {
+  background: rgba(0, 0, 0, 0.5);
 }
