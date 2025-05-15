@@ -1,36 +1,36 @@
 // api.js
-import axios from 'axios';
+import axios from '../api/axiosInstance';
 
 const API_URL = 'http://localhost:8080/api';
 
 // Learning Progress API calls
 export const getAllLearningProgress = () => {
-  return axios.get(`${API_URL}/learning-progress`);
+  return axios.get('/learning-progress');
 };
 
 export const getLearningProgressByUser = (userId) => {
-  return axios.get(`${API_URL}/learning-progress/user/${userId}`);
+  return axios.get(`/learning-progress/user/${userId}`);
 };
 
 export const createLearningProgress = (progressData) => {
-  return axios.post(`${API_URL}/learning-progress`, progressData);
+  return axios.post('/learning-progress', progressData);
 };
 
 export const updateLearningProgress = (id, progressData) => {
-  return axios.put(`${API_URL}/learning-progress/${id}`, progressData);
+  return axios.put(`/learning-progress/${id}`, progressData);
 };
 
 export const deleteLearningProgress = (id) => {
-  return axios.delete(`${API_URL}/learning-progress/${id}`);
+  return axios.delete(`/learning-progress/${id}`);
 };
 
 export const getLearningProgressById = (id) => {
-  return axios.get(`${API_URL}/learning-progress/${id}`);
+  return axios.get(`/learning-progress/${id}`);
 };
 
 export const fetchProgress = async () => {
     try {
-        const response = await axios.get('/api/progress');
+        const response = await axios.get('/progress');
         return response.data;
     } catch (error) {
         console.error('Error fetching progress:', error);
@@ -40,23 +40,23 @@ export const fetchProgress = async () => {
 
 // Travel Guide API calls
 export const getAllTravelGuides = () => {
-  return axios.get(`${API_URL}/travel-guides`);
+  return axios.get('/travel-guides');
 };
 
 export const getTravelGuideById = (id) => {
-  return axios.get(`${API_URL}/travel-guides/${id}`);
+  return axios.get(`/travel-guides/${id}`);
 };
 
 export const searchTravelGuidesByDestination = (destination) => {
-  return axios.get(`${API_URL}/travel-guides/destination?search=${destination}`);
+  return axios.get(`/travel-guides/destination?search=${destination}`);
 };
 
 export const searchTravelGuidesByTopic = (topic) => {
-  return axios.get(`${API_URL}/travel-guides/topic?search=${topic}`);
+  return axios.get(`/travel-guides/topic?search=${topic}`);
 };
 
 export const createTravelGuide = (guideData) => {
-  return axios.post(`${API_URL}/travel-guides`, guideData);
+  return axios.post('/travel-guides', guideData);
 };
 
 export const updateTravelGuide = (id, guideData) => {
