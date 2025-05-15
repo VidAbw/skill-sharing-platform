@@ -18,10 +18,12 @@ function App() {
       <BrowserRouter>
         <Header /> {/* Always visible */}
         <Routes>
+          {/* Public Routes */}
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
+          <Route path="/" element={<Home />} />
 
-          {/* Protected Profile Routes */}
+          {/* Protected Routes */}
           <Route
             path="/profile/*"
             element={
@@ -33,8 +35,11 @@ function App() {
               </PrivateRoute>
             }
           />
-          <Route path="/" element={<Home />} />
-          <Route path="/progress" element={<ProgressList />} />
+          <Route path="/progress" element={
+            <PrivateRoute>
+              <ProgressList />
+            </PrivateRoute>
+          } />
           <Route path="/progress/new" element={
             <PrivateRoute>
               <ProgressForm />
@@ -45,7 +50,11 @@ function App() {
               <ProgressForm />
             </PrivateRoute>
           } />
-          <Route path="/travel-guides" element={<TravelGuideList />} />
+          <Route path="/travel-guides" element={
+            <PrivateRoute>
+              <TravelGuideList />
+            </PrivateRoute>
+          } />
           <Route path="/travel-guides/new" element={
             <PrivateRoute>
               <TravelGuideForm />
@@ -56,8 +65,9 @@ function App() {
               <TravelGuideForm />
             </PrivateRoute>
           } />
-          {/* Optional: Redirect unknown routes */}
-          <Route path="*" element={<Navigate to="/profile" replace />} />
+          
+          {/* Redirect unknown routes to home */}
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </BrowserRouter>
     </AuthProvider>
