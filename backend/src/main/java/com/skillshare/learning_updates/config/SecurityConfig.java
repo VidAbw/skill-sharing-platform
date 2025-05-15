@@ -29,13 +29,14 @@ public class SecurityConfig {
             .csrf().disable()
             .cors(Customizer.withDefaults())
             .authorizeHttpRequests()
-    .requestMatchers("/uploads/**").permitAll()   // Allow access to uploaded images
-    .requestMatchers("/api/auth/**").permitAll()
-    .requestMatchers(HttpMethod.GET, "/api/profiles/search/**").permitAll()
-    .requestMatchers(HttpMethod.GET, "/api/profiles/**").authenticated()
-    .requestMatchers(HttpMethod.PUT, "/api/profiles/**").authenticated()
-    .anyRequest().authenticated()
-
+                .requestMatchers("/uploads/**").permitAll()   // Allow access to uploaded images
+                .requestMatchers("/api/auth/**").permitAll()  // Allow access to auth endpoints
+                .requestMatchers(HttpMethod.GET, "/api/profiles/search/**").permitAll()
+                .requestMatchers(HttpMethod.GET, "/api/learning-progress/**").permitAll()  // Allow public access to learning progress
+                .requestMatchers(HttpMethod.GET, "/api/travel-guides/**").permitAll()      // Allow public access to travel guides
+                .requestMatchers(HttpMethod.GET, "/api/profiles/**").authenticated()
+                .requestMatchers(HttpMethod.PUT, "/api/profiles/**").authenticated()
+                .anyRequest().authenticated()
             .and()
             .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
 
