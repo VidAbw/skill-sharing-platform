@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
 
+//Added items to Travel Learning Questions
+
 const TravelLearningQuestions = () => {
     const { id } = useParams();
     const [questions, setQuestions] = useState([]);
