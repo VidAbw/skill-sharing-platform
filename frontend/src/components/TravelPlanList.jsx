@@ -5,6 +5,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import '../App.css';
 
+//Added items to Travel Plan List
+
 const failedImages = new Set();
 
 const TravelPlanList = () => {
