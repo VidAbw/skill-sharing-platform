@@ -5,6 +5,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import '../App.css';
 
+//Added items into View Plan List
+
 const ViewPlanList = () => {
   const { id } = useParams();
   const [travelPlan, setTravelPlan] = useState(null);
