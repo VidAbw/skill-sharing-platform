@@ -13,6 +13,8 @@ import TravelLearningProgress from './components/TravelLearningProgress';
 import TravelLearningQuestions from './components/TravelLearningQuestions';
 import EditTravelPlan from './components/EditTravelPlan';
 
+//Adding routes to App.jsx
+
 function App() {
     return (
         <BrowserRouter>
