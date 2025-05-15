@@ -22,7 +22,7 @@ const LoginPage = () => {
     try {
       const res = await axios.post("/auth/login", form);
       login(res.data.token);
-      navigate("/profile");
+      navigate("/");
     } catch {
       setError("Invalid credentials");
     }
@@ -65,7 +65,7 @@ const LoginPage = () => {
           {error && <p className="error">{error}</p>}
         </form>
         <p className="switch-link">
-          Don’t have an account? <Link to="/signup">Create one</Link>
+          Don't have an account? <Link to="/signup">Create one</Link>
         </p>
       </div>
     </div>
