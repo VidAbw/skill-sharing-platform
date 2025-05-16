@@ -4,7 +4,7 @@ import { getAllLearningProgress, deleteLearningProgress } from '../../api/api';
 import ProgressItem from './ProgressItem';
 import LikeButton from '../LikeButton';
 import { AuthContext } from '../../context/AuthContext';
-import '../../styles/ProgressList.css';
+import '../ProgressList.css';
 
 const ProgressList = () => {
   const [progressItems, setProgressItems] = useState([]);
