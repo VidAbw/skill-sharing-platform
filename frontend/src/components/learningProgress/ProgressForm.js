@@ -3,11 +3,12 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { createLearningProgress, updateLearningProgress, getLearningProgressById } from '../../api/api';
 import { AuthContext } from '../../context/AuthContext';
 import '../../styles/ProgressFrom.css';
+import '../ProgressList.css';
 
 const ProgressForm = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { currentUser } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const [loading, setLoading] = useState(id ? true : false);
   const [error, setError] = useState(null);
   
@@ -54,11 +55,14 @@ const ProgressForm = () => {
     e.preventDefault();
     setError(null);
     
+    if (!user) {
+      setError('You must be logged in to create a progress update.');
+      return;
+    }
     const progressData = {
       ...formData,
-      userId: currentUser?.id
+      user: { id: user.id }
     };
-    
     try {
       if (isEditing) {
         await updateLearningProgress(id, progressData);
