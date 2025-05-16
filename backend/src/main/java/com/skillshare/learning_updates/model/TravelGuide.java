@@ -12,7 +12,7 @@ import jakarta.persistence.Table;
 public class TravelGuide {
     public TravelGuide() {}
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
     @Column(name = "title", nullable = false)
