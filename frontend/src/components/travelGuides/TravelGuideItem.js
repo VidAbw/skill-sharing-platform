@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../../styles/TravelGuide.css';
+import './TravelGuideList.css';
 
 const TravelGuideItem = ({ guide, onDelete }) => {
   return (
