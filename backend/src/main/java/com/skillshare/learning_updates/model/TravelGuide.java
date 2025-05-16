@@ -23,6 +23,9 @@ public class TravelGuide {
     
     @Column(name = "destination", nullable = false)
     private String destination;
+
+    @Column(name = "content", nullable = false, columnDefinition = "TEXT")
+    private String content;
     
     @Column(name = "topic")
     private String topic;
@@ -31,6 +34,7 @@ public class TravelGuide {
         this.id = id;
         this.title = title;
         this.description = description;
+        this.content = content;
         this.destination = destination;
         this.topic = topic;
     }
@@ -59,6 +63,14 @@ public class TravelGuide {
         this.description = description;
     }
 
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
     public String getDestination() {
         return destination;
     }
@@ -73,6 +85,16 @@ public class TravelGuide {
 
     public void setTopic(String topic) {
         this.topic = topic;
+    }
+
+    // Optional: toString() method for debugging
+    @Override
+    public String toString() {
+        return "TravelGuide{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", destination='" + destination + '\'' +
+                '}';
     }
 
     
