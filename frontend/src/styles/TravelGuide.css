@@ -34,11 +34,14 @@
 }
 
 .guide-card {
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  padding: 18px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  padding: 24px;
+  margin: 20px auto;
+  max-width: 350px;
+  transition: box-shadow 0.2s;
+  position: relative;
 }
 
 .guide-card:hover {
@@ -48,36 +51,54 @@
 
 .guide-card h3 {
   margin-top: 0;
-  color: #333;
-  font-size: 20px;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
+  font-size: 1.3rem;
+  font-weight: 600;
 }
 
-.guide-destination, .guide-topic {
-  color: #666;
-  font-style: italic;
-  margin-bottom: 8px;
-  font-size: 14px;
+.guide-destination,
+.guide-topic {
+  color: #555;
+  font-size: 0.98rem;
+  margin-bottom: 4px;
 }
 
 .guide-description {
-  color: #444;
-  margin-bottom: 16px;
-  line-height: 1.5;
+  color: #333;
+  margin-bottom: 12px;
 }
 
 .view-more-link {
-  display: inline-block;
-  color: #2196F3;
+  color: #1976d2;
   text-decoration: none;
   font-weight: 500;
-  padding: 5px 0;
-  border-bottom: 1px solid transparent;
-  transition: border-color 0.3s;
+  margin-right: 10px;
+  transition: color 0.2s;
 }
 
 .view-more-link:hover {
-  border-bottom: 1px solid #2196F3;
+  color: #0d47a1;
+  text-decoration: underline;
+}
+
+.delete-guide-btn {
+  display: block;
+  margin-top: 10px;
+  padding: 8px 18px;
+  background: #ff4d4f;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 1px 4px rgba(255,77,79,0.08);
+}
+
+.delete-guide-btn:hover {
+  background: #d32f2f;
+  box-shadow: 0 2px 8px rgba(255,77,79,0.18);
 }
 
 .no-guides-message {
