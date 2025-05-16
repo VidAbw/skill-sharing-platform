@@ -13,7 +13,8 @@ const TravelGuideForm = () => {
     title: '',
     destination: '',
     topic: '',
-    description: ''
+    description: '',
+    content: ''
   });
 
   const isEditing = !!id;
@@ -29,7 +30,8 @@ const TravelGuideForm = () => {
           title: guide.title,
           destination: guide.destination,
           topic: guide.topic || '',
-          description: guide.description
+          description: guide.description,
+          content: guide.content || guide.description || ''
         });
       } catch (err) {
         console.error('Error fetching travel guide:', err);
@@ -46,10 +48,19 @@ const TravelGuideForm = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value
-    });
+    // If editing description, also update content to match
+    if (name === 'description') {
+      setFormData({
+        ...formData,
+        description: value,
+        content: value
+      });
+    } else {
+      setFormData({
+        ...formData,
+        [name]: value
+      });
+    }
   };
 
   const handleSubmit = async (e) => {
