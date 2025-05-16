@@ -4,12 +4,13 @@ import { getAllTravelGuides } from '../../api/api';
 import TravelGuideItem from './TravelGuideItem';
 import { AuthContext } from '../../context/AuthContext';
 import '../../styles/TravelGuide.css';
+import axios from '../../api/axiosInstance';
 
 const TravelGuideList = () => {
   const [guides, setGuides] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const { currentUser } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
 
   useEffect(() => {
     const fetchGuides = async () => {
@@ -27,6 +28,16 @@ const TravelGuideList = () => {
     fetchGuides();
   }, []);
 
+  const handleDelete = async (id) => {
+    if (!window.confirm('Are you sure you want to delete this travel guide?')) return;
+    try {
+      await axios.delete(`/travel-guides/${id}`);
+      setGuides(guides.filter((g) => g.id !== id));
+    } catch (err) {
+      alert('Failed to delete travel guide.');
+    }
+  };
+
   if (loading) {
     return <div className="loading-container">Loading travel guides...</div>;
   }
@@ -37,26 +48,21 @@ const TravelGuideList = () => {
 
   return (
     <div className="travel-guide-list">
-      <div className="travel-guide-header">
+      <div className="travel-guide-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <h1>Travel Guides</h1>
-        {currentUser && (
-          <Link to="/travel-guides/new" className="add-guide-btn">
-            Create New Guide
-          </Link>
-        )}
+        <Link to="/travel-guides/new" className="add-guide-btn">
+          + Add Travel Guide
+        </Link>
       </div>
 
       {guides.length === 0 ? (
         <div className="no-guides-message">
           <p>No travel guides available yet.</p>
-          {currentUser && (
-            <p>Be the first to share your travel experiences!</p>
-          )}
         </div>
       ) : (
         <div className="guides-grid">
           {guides.map(guide => (
-            <TravelGuideItem key={guide.id} guide={guide} />
+            <TravelGuideItem key={guide.id} guide={guide} onDelete={user ? handleDelete : undefined} />
           ))}
         </div>
       )}
