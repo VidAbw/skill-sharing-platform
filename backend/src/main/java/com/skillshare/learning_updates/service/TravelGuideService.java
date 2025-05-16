@@ -27,4 +27,31 @@ public class TravelGuideService {
     public Optional<TravelGuide> getTravelGuideById(Long id) {
         return repository.findById(id);
     }
+
+    // POST - Create new travel guide
+    public TravelGuide createTravelGuide(TravelGuide travelGuide) {
+        return repository.save(travelGuide);
+    }
+
+    // PUT - Update existing travel guide
+    public Optional<TravelGuide> updateTravelGuide(Long id, TravelGuide updatedGuide) {
+        return repository.findById(id)
+                .map(existingGuide -> {
+                    // Update the existing guide with new values
+                    existingGuide.setDestination(updatedGuide.getDestination());
+                    existingGuide.setTopic(updatedGuide.getTopic());
+                    existingGuide.setContent(updatedGuide.getContent());
+                    // Add any other fields that need to be updated
+                    return repository.save(existingGuide);
+                });
+    }
+
+    // DELETE travel guide
+    public boolean deleteTravelGuide(Long id) {
+        if (repository.existsById(id)) {
+            repository.deleteById(id);
+            return true;
+        }
+        return false;
+    }
 }
