@@ -8,6 +8,9 @@ import lombok.Data;
 
 import java.time.LocalDateTime;
 
+//Added components to the LearningMilestone class
+// to manage learning milestones in a planner application.
+
 @Entity
 @Data
 public class LearningMilestone {
