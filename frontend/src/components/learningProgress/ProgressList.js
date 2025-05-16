@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { getAllLearningProgress, deleteLearningProgress } from '../../api/api';
 import ProgressItem from './ProgressItem';
+import LikeButton from '../LikeButton';
 import { AuthContext } from '../../context/AuthContext';
 import '../../styles/ProgressList.css';
 
@@ -9,7 +10,7 @@ const ProgressList = () => {
   const [progressItems, setProgressItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const { currentUser } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
 
   useEffect(() => {
     fetchProgressList();
@@ -46,36 +47,27 @@ const ProgressList = () => {
     return <div className="loading-container">Loading progress updates...</div>;
   }
 
+  if (error) {
+    return <div className="error-container">{error}</div>;
+  }
+
   return (
     <div className="progress-list">
-      <div className="progress-header">
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <h1>Learning Progress Updates</h1>
-        {currentUser && (
-          <Link to="/progress/new" className="btn-create">
-            Add New Progress
-          </Link>
-        )}
+        <Link to="/progress/new" className="add-progress-btn">
+          + Add Progress
+        </Link>
       </div>
-
-      {error && <div className="error">{error}</div>}
-      
-      {!error && progressItems.length === 0 ? (
-        <div className="no-progress-message">
-          <p>No progress updates found.</p>
-          {currentUser && (
-            <p>Share your learning journey by adding your first progress update!</p>
-          )}
-        </div>
+      {progressItems.length === 0 ? (
+        <p>No progress updates found.</p>
       ) : (
-        <div className="progress-grid">
-          {progressItems.map(progress => (
-            <ProgressItem 
-              key={progress.id} 
-              progress={progress}
-              onDelete={handleDelete}
-            />
-          ))}
-        </div>
+        progressItems.map((progress) => (
+          <div key={progress.id} className="progress-item">
+            <ProgressItem progress={progress} onDelete={handleDelete} />
+            {user && <LikeButton postId={progress.id} userId={user.id} />}
+          </div>
+        ))
       )}
     </div>
   );
