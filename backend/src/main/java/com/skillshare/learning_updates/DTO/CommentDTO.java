@@ -25,3 +25,4 @@ public class CommentDTO {
     public String getUserName() { return userName; }
     public Long getPostOwnerId() { return postOwnerId; }
 }
+
