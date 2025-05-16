@@ -3,6 +3,9 @@
   max-width: 900px;
   margin: 0 auto;
   padding: 20px;
+  background: #f6fcf7; /* very light green */
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(80, 200, 120, 0.07);
 }
 
 .travel-guide-header {
@@ -34,9 +37,9 @@
 }
 
 .guide-card {
-  background: #fff;
+  background: #ffffffcc; /* semi-transparent white */
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  box-shadow: 0 2px 8px rgba(80, 200, 120, 0.08);
   padding: 24px;
   margin: 20px auto;
   max-width: 350px;
