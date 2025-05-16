@@ -8,11 +8,11 @@ const LikeButton = ({ postId, userId }) => {
 
   const fetchLikeData = useCallback(async () => {
     try {
-      const countRes = await axios.get(`/api/likes/count/${postId}`);
+      const countRes = await axios.get(`/likes/count/${postId}`);
       setLikeCount(countRes.data);
 
       const checkRes = await axios
-        .get(`/api/likes/post/${postId}/user/${userId}`)
+        .get(`/likes/post/${postId}/user/${userId}`)
         .catch(() => null);
 
       if (checkRes?.data?.id) setLiked(true);
@@ -24,9 +24,9 @@ const LikeButton = ({ postId, userId }) => {
   const handleToggleLike = async () => {
     try {
       if (liked) {
-        await axios.delete(`/api/likes`, { data: { userId, postId } });
+        await axios.delete(`/likes`, { data: { userId, postId } });
       } else {
-        await axios.post(`/api/likes`, { userId, postId });
+        await axios.post(`/likes`, { userId, postId });
       }
 
       setLiked(!liked);
