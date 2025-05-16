@@ -5,6 +5,7 @@ import TravelGuideItem from './TravelGuideItem';
 import { AuthContext } from '../../context/AuthContext';
 import '../../styles/TravelGuide.css';
 import axios from '../../api/axiosInstance';
+import './TravelGuideList.css';
 
 const TravelGuideList = () => {
   const [guides, setGuides] = useState([]);
