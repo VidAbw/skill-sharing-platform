@@ -6,6 +6,9 @@ import lombok.Data;
 import java.time.LocalDateTime;
 import java.util.List;
 
+// This class represents a learning plan for travel, including various attributes
+// such as title, description, budget, travel type, dates, and associated resources.
+
 @Entity
 @Table(name = "travel_learning_plans")
 @Data
