@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { getTravelGuideById, createTravelGuide, updateTravelGuide } from '../../api/api';
 import '../../styles/TravelGuide.css';
+import './TravelGuideList.css';
 
 const TravelGuideForm = () => {
   const { id } = useParams();
